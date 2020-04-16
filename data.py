@@ -1,7 +1,8 @@
+from meta import start_word, end_word
 # объявим словарь ключевых слов:
 key_word_dict = {"пока": "while", "для": "for", "целое": "int", "строка": "str", "символ": "char", "дробь": "float",
                  "флаг": "bool", "иначе": "else", "если": "if", "начало": "begin", "конец": "end",
-                 "программа": "program",
+                 start_word: "program", end_word:"end",
                  "от": "xxx", "диапозон": "range", "массив": "array", "добавить": "append", "синус": "sin", "косинус": "cos", "тангенс": "tg", "экспонента": "exp"}
 
 # объявим массив разделителей:

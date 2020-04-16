@@ -1,6 +1,6 @@
 from data import kw_keys, kw_val, separator, identity, value, general_array
 from func import *
-from meta import p_name, eng_abc
+from meta import p_name, eng_abc, start_word, end_word
 
 # --------------подготовка входного файла------------------#
 
@@ -25,7 +25,7 @@ dprint("Входной текст в массивах: ", words)
 
 final_arr = []
 for word in words:  # определение точки входа в программу
-    spw = 'программа'
+    spw = start_word
     if (spw in word):
         final_arr.append(spw)
         start = words.index(word)
@@ -38,7 +38,7 @@ for word in words:  # определение точки входа в прогр
         cut_array(words, start+1)  # обрезаем массив на start элементов слева
         break
 else:
-    error("Ошибка 1: Не найдена точка входа!")
+    error("Ошибка 1: Не найдена точка входа! (слово 'программа')")
 # -----------------------------------------------------------#
 dprint("Название программы: ", p_name)
 dprint("words после найденного ПРОГРАММА: ", words)
@@ -58,11 +58,24 @@ else:
     error('Ошибка 2: Не найден блок начала')
 # ----------------------------------------------------------#
 cut_array(words, start + 1)
+
+
+
+
+
+
+
 # -----------работаем со словами в файле------------------#
+find = True
 
 for string in words:
     for word in string:
         parse(word, final_arr)
+
+
+
+
+
 # ------------------------------------------------------#
 dprint('Финальный массив:', final_arr)
 dprint('Массив значеинй:', value)
