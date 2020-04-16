@@ -33,14 +33,14 @@ for word in words:  # определение точки входа в прогр
             p_name = word[word.index(spw) + 1]
             final_arr.append(p_name)  # добавляем название программы
             identity.append(p_name)
-            start+=1
         except Exception:
             pass
+        cut_array(words, start+1)  # обрезаем массив на start элементов слева
         break
 else:
     error("Ошибка 1: Не найдена точка входа!")
 # -----------------------------------------------------------#
-cut_array(words, start)  # обрезаем массив на start элементов слева
+dprint("Название программы: ", p_name)
 dprint("words после найденного ПРОГРАММА: ", words)
 # ---------поиск строки начала--------------------
 
