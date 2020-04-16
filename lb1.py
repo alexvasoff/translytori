@@ -12,9 +12,9 @@ for line in wf:  # вывод слов в строке
         a = line.split(' ')
         for word in a:
             for symbol in word:
-                if symbol.isupper():    # проверка на отсутвтвие больших букв
+                if symbol.isupper():  # проверка на отсутвтвие больших букв
                     error("Ошибка 0: Найдена большая буква")
-                if symbol in eng_abc:   # проверка на отсутствие англ символов
+                if symbol in eng_abc:  # проверка на отсутствие англ символов
                     error("Ошибка : Инородный символ в слове " + word)
         words.append(a)
 
@@ -35,7 +35,7 @@ for word in words:  # определение точки входа в прогр
             identity.append(p_name)
         except Exception:
             pass
-        cut_array(words, start+1)  # обрезаем массив на start элементов слева
+        cut_array(words, start + 1)  # обрезаем массив на start элементов слева
         break
 else:
     error("Ошибка 1: Не найдена точка входа! (слово 'программа')")
@@ -43,27 +43,28 @@ else:
 dprint("Название программы: ", p_name)
 dprint("words после найденного ПРОГРАММА: ", words)
 # ---------поиск строки начала--------------------
-
+sw = 'начало'
+ew = end_word
 for word in words:
     dprint("Чекаем со строки" + str(word))
-    sw = 'начало'
     if (sw in word):
         if len(word) == 1:
             final_arr.append(sw)
             start = words.index(word)
-            break
+            sw = ''
+            print("Нашел начало")
         else:
             error("Не верная конструкция начала")
+    elif (ew in word):
+        end = words.index(word)
+        ew = ''
+        print("нашел конец")
+if sw == "" and ew == "":
+    pass
 else:
-    error('Ошибка 2: Не найден блок начала')
+    error('Ошибка 2: Ошибка в блоке определения программы (начало || конец)')
 # ----------------------------------------------------------#
 cut_array(words, start + 1)
-
-
-
-
-
-
 
 # -----------работаем со словами в файле------------------#
 find = True
@@ -72,15 +73,9 @@ for string in words:
     for word in string:
         parse(word, final_arr)
 
-
-
-
-
 # ------------------------------------------------------#
 dprint('Финальный массив:', final_arr)
 dprint('Массив значеинй:', value)
 dprint('Массив идентификаторов: ', identity)
 
 # ------------формирование дескриптора-----------#
-
-
