@@ -24,13 +24,15 @@ dprint("Входной текст в массивах: ", lens)
 # -------------поиск точки входа в программу----------#
 
 final_arr = []
-for word in lens:  # определение точки входа в программу
+for string in lens:  # определение точки входа в программу
     spw = start_word
-    if (spw in word):
+    if (spw in string):
         final_arr.append(spw)
-        start = lens.index(word)
+        start = lens.index(string)
+        if (len(string)) > 2:
+            error("Ошибка: Название программы указывается без пробела!")
         try:
-            p_name = word[word.index(spw) + 1]
+            p_name = string[string.index(spw) + 1]
             final_arr.append(p_name)  # добавляем название программы
             identity.append(p_name)
         except Exception:
