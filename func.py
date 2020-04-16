@@ -8,10 +8,13 @@ def error(description):
     exit(0)
 
 
-def cut_array(arr, n):
+def cut_array(arr, n, side="right"):
     """Удаляет из массива N элементов с начала"""
     for _ in range(n):  # урезаем массив до блока начала
-        arr.pop(0)
+        if side == "right":
+            arr.pop(0)
+        elif side == "left":
+            arr.pop()
 
 
 def dprint(*str):
