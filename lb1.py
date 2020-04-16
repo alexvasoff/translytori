@@ -6,25 +6,20 @@ from meta import p_name, eng_abc
 
 file = open("text.txt", 'r', encoding="utf-8")  # открываем исходный файл в режиме чтения
 wf = (file.read().split('\n'))  # массив из строк файла
-
 words = []
 for line in wf:  # вывод слов в строке
     if line:  # убираем пустые строки
         a = line.split(' ')
+        for word in a:
+            for symbol in word:
+                if symbol.isupper():    # проверка на отсутвтвие больших букв
+                    error("Ошибка 0: Найдена большая буква")
+                if symbol in eng_abc:   # проверка на отсутствие англ символов
+                    error("Ошибка : Инородный символ в слове " + word)
         words.append(a)
+
 # ---------------------------------------------------------#
-
 dprint("Входной текст в массивах: ", words)
-# -----------проверка на маленькие буквы-------------------#
-for string in words:
-    for word in string:
-        for symbol in word:
-            if symbol.isupper():
-                error('Ошибка 0: Найдена БОЛЬШАЯ буква. Так не пойдет! ' + word)
-            elif symbol in eng_abc:
-                error("Ошибка : Инородный символ в слове " + word)
-# -------------------------------------------------------------#
-
 
 # -------------поиск точки входа в программу----------#
 
