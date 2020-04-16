@@ -13,7 +13,7 @@ for line in wf:  # вывод слов в строке
         for word in a:
             for symbol in word:
                 if symbol.isupper():  # проверка на отсутвтвие больших букв
-                    error("Ошибка 0: Найдена большая буква")
+                    error("Ошибка 0: Найдена большая буква в слове " + word)
                 if symbol in eng_abc:  # проверка на отсутствие англ символов
                     error("Ошибка : Инородный символ в слове " + word)
         words.append(a)
