@@ -42,33 +42,32 @@ else:
 # -----------------------------------------------------------#
 dprint("Название программы: ", p_name)
 dprint("words после найденного ПРОГРАММА: ", words)
-# ---------поиск строки начала--------------------
+# ---------поиск строки начала и конец--------------------
 sw = 'начало'
 ew = end_word
 for word in words:
-    dprint("Чекаем со строки" + str(word))
     if (sw in word):
         if len(word) == 1:
             final_arr.append(sw)
             start = words.index(word)
             sw = ''
-            print("Нашел начало")
         else:
             error("Не верная конструкция начала")
     elif (ew in word):
-        end = words.index(word)
+        end = words.index(word) + 1
         ew = ''
-        print("нашел конец")
+        break
 if sw == "" and ew == "":
     pass
 else:
     error('Ошибка 2: Ошибка в блоке определения программы (начало || конец)')
 # ----------------------------------------------------------#
+
+cut_array(words, len(words) - end, "right" )
 cut_array(words, start + 1)
+dprint("Массив программного кода: " , words)
 
 # -----------работаем со словами в файле------------------#
-find = True
-
 for string in words:
     for word in string:
         parse(word, final_arr)
