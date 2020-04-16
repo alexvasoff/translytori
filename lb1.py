@@ -6,7 +6,7 @@ from meta import p_name, eng_abc, start_word, end_word
 
 file = open("text.txt", 'r', encoding="utf-8")  # открываем исходный файл в режиме чтения
 wf = (file.read().split('\n'))  # массив из строк файла
-words = []
+lens = []
 for line in wf:  # вывод слов в строке
     if line:  # убираем пустые строки
         a = line.split(' ')
@@ -16,45 +16,45 @@ for line in wf:  # вывод слов в строке
                     error("Ошибка 0: Найдена большая буква в слове " + word)
                 if symbol in eng_abc:  # проверка на отсутствие англ символов
                     error("Ошибка : Инородный символ в слове " + word)
-        words.append(a)
+        lens.append(a)
 
 # ---------------------------------------------------------#
-dprint("Входной текст в массивах: ", words)
+dprint("Входной текст в массивах: ", lens)
 
 # -------------поиск точки входа в программу----------#
 
 final_arr = []
-for word in words:  # определение точки входа в программу
+for word in lens:  # определение точки входа в программу
     spw = start_word
     if (spw in word):
         final_arr.append(spw)
-        start = words.index(word)
+        start = lens.index(word)
         try:
             p_name = word[word.index(spw) + 1]
             final_arr.append(p_name)  # добавляем название программы
             identity.append(p_name)
         except Exception:
             pass
-        cut_array(words, start + 1)  # обрезаем массив на start элементов слева
+        cut_array(lens, start + 1)  # обрезаем массив на start элементов слева
         break
 else:
     error("Ошибка 1: Не найдена точка входа! (слово 'программа')")
 # -----------------------------------------------------------#
 dprint("Название программы: ", p_name)
-dprint("words после найденного ПРОГРАММА: ", words)
+dprint("lens после найденного ПРОГРАММА: ", lens)
 # ---------поиск строки начала и конец--------------------
 sw = 'начало'
 ew = end_word
-for word in words:
+for word in lens:
     if (sw in word):
         if len(word) == 1:
             final_arr.append(sw)
-            start = words.index(word)
+            start = lens.index(word)
             sw = ''
         else:
             error("Не верная конструкция начала")
     elif (ew in word):
-        end = words.index(word) + 1
+        end = lens.index(word) + 1
         ew = ''
         break
 if sw == "" and ew == "":
@@ -63,12 +63,12 @@ else:
     error('Ошибка 2: Ошибка в блоке определения программы (начало || конец)')
 # ----------------------------------------------------------#
 
-cut_array(words, len(words) - end, "right" )
-cut_array(words, start + 1)
-dprint("Массив программного кода: " , words)
+cut_array(lens, len(lens) - end, "right" )
+cut_array(lens, start + 1)
+dprint("Массив программного кода: " , lens)
 
 # -----------работаем со словами в файле------------------#
-for string in words:
+for string in lens:
     for word in string:
         parse(word, final_arr)
 
