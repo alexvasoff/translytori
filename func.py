@@ -19,7 +19,7 @@ def cut_array(arr, n, side="left"):
 
 def dprint(*str):
     if _DEBUG:
-        print(str)
+        print(*str)
 
 
 def detection(symb):
@@ -60,7 +60,8 @@ def parse(ch_word, final_arr):
                         ch_word = ch_word[len(el):]
                         dprint('Теперь мы отправляем на проверку новое слово: ', ch_word)
                     else:
-                        error("Ошибка 3: что-то не так в слове: " + el)
+                        unknow += ch_word[:len(el)]
+                        ch_word = ch_word[len(el):]
                 break
         else:
             unknow += ch_word[0]
