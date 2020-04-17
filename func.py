@@ -9,7 +9,14 @@ def error(description):
 
 
 def cut_array(arr, n, side="left"):
-    """Удаляет из массива N элементов с начала"""
+
+    """
+    Удаляет из массива N элементов с начала
+    :param arr: изменяемый массив
+    :param n: кол-во символов на срез
+    :param side: с какой стороны двигаемся
+    :return:
+    """
     for _ in range(n):  # урезаем массив до блока начала
         if side == "left":
             arr.pop(0)
@@ -23,6 +30,11 @@ def dprint(*str):
 
 
 def detection(symb):
+    """
+    Определяет тип лексемы
+    :param symb: лексема
+    :return:
+    """
     try:
         int(symb)
         if _DUPLICATE:
@@ -39,6 +51,12 @@ def detection(symb):
 
 
 def parse(ch_word, final_arr):
+    """
+    Анализирует слово и решает его судьбу
+    :param ch_word: слово для проверки
+    :param final_arr: массив куда добавляется сырое слово
+    :return:
+    """
     unknow = ''
     while len(ch_word) > 0:
         dprint("Cмотрим слово:", ch_word)
