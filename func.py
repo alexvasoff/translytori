@@ -62,6 +62,7 @@ def parse(ch_word, final_arr):
                     else:
                         unknow += ch_word[:len(el)]
                         ch_word = ch_word[len(el):]
+                        # если необходимо недопускать син*** и тд, когда есть син(ключевое слово): error("Ошибка 3: что-то не так в слове: " + el)
                 break
         else:
             unknow += ch_word[0]
