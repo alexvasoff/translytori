@@ -80,3 +80,27 @@ dprint('Массив значеинй:', value)
 dprint('Массив идентификаторов: ', identity)
 
 # ------------формирование дескриптора-----------#
+print("Значимая структура входного кода:", final_arr)
+print("Ключевые слова:", kw_keys)
+print("Разделители:", separator)
+print("Идентификаторы:", identity)
+print("Константы:", value)
+print("Формируем дескриптор:")
+disc = []
+for el in final_arr:
+    if el in kw_keys:
+        position = "кл. слово"
+        id = kw_keys.index(el)
+    elif el in separator:
+        position = "разд."
+        id = separator.index(el)
+    elif el in identity:
+        position = "идент."
+        id = identity.index(el)
+    elif el in value:
+        position = 'конст.'
+        id = value.index(el)
+    else:
+        error("Секретная ошибка, если она появилась, то все...")
+    disc.append([position, id])
+print(disc)
