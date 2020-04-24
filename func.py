@@ -2,6 +2,7 @@ from data import *
 from settings import _DEBUG, _DUPLICATE
 
 
+
 def error(description):
     print(description)
     print("Программа прервана!")
